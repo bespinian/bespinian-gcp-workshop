@@ -15,7 +15,8 @@ public class GreetingController {
 	@GetMapping("/greeting")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 		long c = counter.incrementAndGet();
-		System.out.println(String.format("/greeting called with name: %s, count: %d", name, c));
+		String logTemplate = "/greeting called with name: %s, count: %d";
+		System.out.println(String.format(logTemplate, name, c));
 		return new Greeting(c, String.format(template, name));
 	}
 }
